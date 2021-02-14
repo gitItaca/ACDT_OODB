@@ -1,5 +1,5 @@
 package OODB.oodb.dao;
 
-public class ProductoDao {
+public class ProfesorDao {
 
 }
