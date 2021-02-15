@@ -1,14 +1,15 @@
 package OODB.oodb.model;
 
+import java.util.List;
+
 public class Asignatura {
 
 	private int codigo;
 	private String nombre;
-// igual le tengo que meter un array de profesores para relacionarla, DUDAS	
+	private List<Profesor> listaProfesoresAsignatura;	
 	
 //CONSTRUCTOR
 	public Asignatura(int codigo, String nombre) {
-		super();
 		this.codigo = codigo;
 		this.nombre = nombre;
 	}
@@ -28,11 +29,21 @@ public class Asignatura {
 		this.nombre = nombre;
 	}
 
+	public List<Profesor> getListaProfesoresAsignatura() {
+		return listaProfesoresAsignatura;
+	}
+
+	public void setListaProfesoresAsignatura(List<Profesor> listaProfesoresAsignatura) {
+		this.listaProfesoresAsignatura = listaProfesoresAsignatura;
+	}
+	
+
 //METODOS
 	@Override
 	public String toString() {
 		return "Asignatura [codigo=" + codigo + ", nombre=" + nombre + "]";
 	}
+
 	
 	
 }

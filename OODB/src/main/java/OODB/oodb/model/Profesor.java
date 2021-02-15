@@ -7,16 +7,17 @@ public class Profesor {
 	private String apellidos;
 	private String sexo;
 	private String fechaNacimiento;
-	// igual le tengo que meter un array de asignaturas para relacionarla, DUDAS
+	private int codigoCentro;
+	private Centro centroProfesor;
 	
 //CONSTRUCTOR
-	public Profesor(int codigo, String nombre, String apellidos, String sexo, String fechaNacimiento) {
-		super();
+	public Profesor(int codigo, String nombre, String apellidos, String sexo, String fechaNacimiento, int codigoCentro) {
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.sexo = sexo;
 		this.fechaNacimiento = fechaNacimiento;
+		this.codigoCentro = codigoCentro;
 	}
 
 //GETTERS Y SETTERS
@@ -55,6 +56,32 @@ public class Profesor {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
+	public int getCodigoCentro() {
+		return codigoCentro;
+	}
+
+	public void setCodigoCentro(int codigoCentro) {
+		this.codigoCentro = codigoCentro;
+	}
+
+	public Centro getCentroProfesor() {
+		return centroProfesor;
+	}
+
+	public void setCentroProfesor(Centro centroProfesor) {
+		this.centroProfesor = centroProfesor;
+	}
+	
+	
+	//METODOS	
+	@Override
+	public String toString() {
+		return "Profesor [codigo=" + codigo + ", nombre=" + nombre + ", apellidos=" + apellidos + ", sexo=" + sexo
+				+ ", fechaNacimiento=" + fechaNacimiento + ", codigoCentro=" + codigoCentro + ", centroProfesor="
+				+ centroProfesor.getNombre() + "]";
+	}
+
+	
 
 	
 	

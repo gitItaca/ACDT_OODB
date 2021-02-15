@@ -2,15 +2,18 @@ package OODB.oodb.dao;
 
 import java.util.List;
 
+import org.neodatis.odb.ODB;
+import org.neodatis.odb.Objects;
+
 
 public interface Dao<T> {
 	T get(String id);
     
-    List<T> getAll();
+	List<T> getAll(ODB odb);
     
-    void save(T t);
+    void save(T t, ODB odb);
     
-    void update(T t);
+    void update(T t, String nombreDocumento);
     
-    void delete(T t);
+    void delete(T t, String nombreDocumento);
 }

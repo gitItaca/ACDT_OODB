@@ -1,17 +1,20 @@
 package OODB.oodb.model;
 
+import java.util.List;
+
 public class Centro {
 
 	private int codigo;
 	private String nombre;
-	private String director;
+	private Profesor director;
 	private String direccion;
 	private String localidad;
 	private String provincia;
+	private List<Profesor> listaProfesoresCentro;
+	
 	
 //CONSTRUCTOR
-	public Centro(int codigo, String nombre, String director, String direccion, String localidad, String provincia) {
-		super();
+	public Centro(int codigo, String nombre, Profesor director, String direccion, String localidad, String provincia) {
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.director = director;
@@ -35,10 +38,11 @@ public class Centro {
 		this.nombre = nombre;
 	}
 
-	public String getDirector() {
+	public Profesor getDirector() {
 		return director;
 	}
-	public void setDirector(String director) {
+
+	public void setDirector(Profesor director) {
 		this.director = director;
 	}
 
@@ -63,11 +67,20 @@ public class Centro {
 		this.provincia = provincia;
 	}
 
+	public List<Profesor> getListaProfesoresCentro() {
+		return listaProfesoresCentro;
+	}
+
+	public void setListaProfesoresCentro(List<Profesor> listaProfesoresCentro) {
+		this.listaProfesoresCentro = listaProfesoresCentro;
+	}
+	
+	
 //METODOS
 	@Override
 	public String toString() {
-		return "Centro [codigo=" + codigo + ", nombre=" + nombre + ", director=" + director + ", direccion=" + direccion
+		return "Centro [codigo=" + codigo + ", nombre=" + nombre + ", director=" + director.getNombre() + " " + director.getApellidos() + ", direccion=" + direccion
 				+ ", localidad=" + localidad + ", provincia=" + provincia + "]";
-	}	
+	}
 	
 }
