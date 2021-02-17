@@ -65,7 +65,7 @@ public class AsignaturaDao implements Dao<Asignatura>{
 	}
 
 	@Override
-	public void delete(Asignatura asignatura, String nombreDocumento) {
+	public void delete(ODB odb, int codigo) {
 		
 		
 	}

@@ -47,7 +47,7 @@ public class CentroDao implements Dao<Centro>{
 	}
 
 	@Override
-	public void delete(Centro centro, String nombreDocumento) {
+	public void delete(ODB odb, int codigo) {
 		
 		
 	}

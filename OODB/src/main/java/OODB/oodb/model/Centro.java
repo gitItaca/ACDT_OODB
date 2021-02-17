@@ -79,7 +79,7 @@ public class Centro {
 //METODOS
 	@Override
 	public String toString() {
-		return "Centro [codigo=" + codigo + ", nombre=" + nombre + ", director=" + director.getNombre() + " " + director.getApellidos() + ", direccion=" + direccion
+		return "Centro [codigo=" + codigo + ", nombre=" + nombre + ", direccion=" + direccion
 				+ ", localidad=" + localidad + ", provincia=" + provincia + "]";
 	}
 	

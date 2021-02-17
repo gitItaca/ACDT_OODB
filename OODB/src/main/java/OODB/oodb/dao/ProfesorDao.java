@@ -49,9 +49,7 @@ public class ProfesorDao implements Dao<Profesor>{
 	public List<Profesor> getAllSameName(ODB odb, String nombre, String apellido) {
 		List<Profesor> profesores = new ArrayList();
 		
-//		IQuery query = new CriteriaQuery(Profesor.class, Where.equal("nombre", nombre));
-		
-		ICriterion criterio = new And().add(Where.equal("nombre", nombre)).add(Where.equal("apellido", apellido));
+		ICriterion criterio = new And().add(Where.equal("nombre", nombre)).add(Where.equal("apellidos", apellido));
 		CriteriaQuery query = new CriteriaQuery(Profesor.class, criterio);
 		
 		Objects<Profesor> objectsProfesor = odb.getObjects(query);
@@ -84,7 +82,18 @@ public class ProfesorDao implements Dao<Profesor>{
 	}
 
 	@Override
-	public void delete(Profesor t, String nombreDocumento) {
+	public void delete(ODB odb, int codigo) {
+		IQuery query = new CriteriaQuery(Profesor.class, Where.equal("codigo", codigo));
+		Objects<Profesor> objectsProfesor = odb.getObjects(query);
+		if(objectsProfesor.isEmpty()) {
+			System.out.println("No hay ningún profesor con ese código.");
+		}
+		while(!objectsProfesor.isEmpty()) {		
+			Profesor prof = (Profesor) odb.getObjects(query).getFirst();
+			odb.delete(prof);			
+//			odb.deleteCascade(prof);	//Elimina el profesor y todo lo que tiene asociado.
+			objectsProfesor = odb.getObjects(query);
+		}
 		
 	}
 	

@@ -15,5 +15,5 @@ public interface Dao<T> {
     
     void update(T t, String nombreDocumento);
     
-    void delete(T t, String nombreDocumento);
+    void delete(ODB odb, int codigo);
 }

@@ -39,7 +39,7 @@ private static final String NOMBRE_DOCUMENTO = "pomelu.neodatis";
 			case 1: //Listar todos los centros.
 				List<Centro> centros = cDao.getAll(odb);
 				for(Centro centro : centros) {
-					System.out.println(centro.toString());
+					System.out.println(centro);
 				}
 				break;
 			case 2: //Listar todos los profesores.
@@ -79,15 +79,25 @@ private static final String NOMBRE_DOCUMENTO = "pomelu.neodatis";
 				profesores = pDao.getAllSameName(odb, nombre, apellido);
 				if(profesores.isEmpty()) {
 					System.out.println("El profesor no esta en la base de datos.");
+				}else {
+					for(Profesor prof : profesores) {
+						System.out.println(prof);
+					}
 				}
-				break;			
+				break;		
+			case 6: //Eliminar un profesor.				
+				System.out.println("Escribe el código del profesor.");
+				int codigo = Leer.pedirEnteroValidar();
+				
+				pDao.delete(odb, codigo);
+				break;		
 			case 0: System.out.println("Has salido.");
 				odb.close();	//Cierro la base de datos.
 				break;
 			}
 			
 		} while(opcion != 0);
-    	  odb.close();
+    	  
 
 	}//FIN MAIN
 
@@ -100,6 +110,7 @@ private static final String NOMBRE_DOCUMENTO = "pomelu.neodatis";
 			System.out.println("3- Listar los profesores de un centro cuya fecha de nacimiento sea anterior a 1993.");
 			System.out.println("4- Listar los profesores de sexo masculino que impartan la asignatura de Acceso a datos.");
 			System.out.println("5- Comprobar que un profesor ya existe.");
+			System.out.println("6- Eliminar un profesor.");
 			int opcion = Leer.pedirEnteroValidar();		
 		
 		return opcion;
