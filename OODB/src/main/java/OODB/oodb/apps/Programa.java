@@ -60,24 +60,26 @@ private static final String NOMBRE_DOCUMENTO = "pomelu.neodatis";
 				}
 				break;
 			case 4: //Listar los profesores de sexo masculino que impartan la asignatura de Acceso a datos.
-				asignaturas = aDao.getNombre(odb, "Acceso a datos");
+				asignaturas = aDao.getNombre(odb, "Acceso a datos");		//Meto en una lista las asignaturas que se llamen Acceso a datos.
 				for(Asignatura asignatura : asignaturas) {
 					profesores = asignatura.getListaProfesoresAsignatura();
 					for(Profesor p : profesores) {
 						if(p.getSexo().contentEquals("Hombre")) {
-							System.out.println(p.toString());
+							System.out.println(p.toString());				//Saco por pantalla los profesores hombres que imparten acceso a datos.
 						}
 					}
-				}
-				profesores = pDao.getAllMen(odb);
-				for(Profesor profesor : profesores) {
-					
-				}
-				
+				}				
 				break;
-			case 5: //Comprobar que un profesor ya existe.
+			case 5: //Comprobar que un profesor ya existe.				
+				System.out.println("Escribe el nombre del profesor.");
+				String nombre = Leer.pedirCadena();
+				System.out.println("Escribe su apellido.");
+				String apellido = Leer.pedirCadena();
 				
-				
+				profesores = pDao.getAllSameName(odb, nombre, apellido);
+				if(profesores.isEmpty()) {
+					System.out.println("El profesor no esta en la base de datos.");
+				}
 				break;			
 			case 0: System.out.println("Has salido.");
 				odb.close();	//Cierro la base de datos.
@@ -85,7 +87,7 @@ private static final String NOMBRE_DOCUMENTO = "pomelu.neodatis";
 			}
 			
 		} while(opcion != 0);
-    	    	
+    	  odb.close();
 
 	}//FIN MAIN
 

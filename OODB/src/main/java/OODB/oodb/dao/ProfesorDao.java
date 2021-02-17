@@ -7,6 +7,8 @@ import java.util.List;
 import org.neodatis.odb.ODB;
 import org.neodatis.odb.Objects;
 import org.neodatis.odb.core.query.IQuery;
+import org.neodatis.odb.core.query.criteria.And;
+import org.neodatis.odb.core.query.criteria.ICriterion;
 import org.neodatis.odb.core.query.criteria.Where;
 import org.neodatis.odb.impl.core.query.criteria.CriteriaQuery;
 
@@ -36,6 +38,22 @@ public class ProfesorDao implements Dao<Profesor>{
 	public List<Profesor> getAllMen(ODB odb) {
 		List<Profesor> profesores = new ArrayList();
 		IQuery query = new CriteriaQuery(Profesor.class, Where.equal("sexo", "Hombre"));
+		Objects<Profesor> objectsProfesor = odb.getObjects(query);
+		
+		while (objectsProfesor.hasNext()) {
+			profesores.add(objectsProfesor.next());
+		}
+		return profesores;
+	}
+	
+	public List<Profesor> getAllSameName(ODB odb, String nombre, String apellido) {
+		List<Profesor> profesores = new ArrayList();
+		
+//		IQuery query = new CriteriaQuery(Profesor.class, Where.equal("nombre", nombre));
+		
+		ICriterion criterio = new And().add(Where.equal("nombre", nombre)).add(Where.equal("apellido", apellido));
+		CriteriaQuery query = new CriteriaQuery(Profesor.class, criterio);
+		
 		Objects<Profesor> objectsProfesor = odb.getObjects(query);
 		
 		while (objectsProfesor.hasNext()) {

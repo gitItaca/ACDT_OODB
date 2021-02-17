@@ -6,10 +6,13 @@ import java.util.List;
 import org.neodatis.odb.ODB;
 import org.neodatis.odb.Objects;
 import org.neodatis.odb.core.query.IQuery;
+import org.neodatis.odb.core.query.criteria.And;
+import org.neodatis.odb.core.query.criteria.ICriterion;
 import org.neodatis.odb.core.query.criteria.Where;
 import org.neodatis.odb.impl.core.query.criteria.CriteriaQuery;
 
 import OODB.oodb.model.Asignatura;
+import OODB.oodb.model.Profesor;
 
 public class AsignaturaDao implements Dao<Asignatura>{
 
@@ -41,6 +44,13 @@ public class AsignaturaDao implements Dao<Asignatura>{
 		}
 		return asignaturas;
 	}
+	
+//	public List<Profesor> getProfesConAsignatura (int cod) {
+//		List<Profesor> profesores = new ArrayList();
+//		ICriterion criterio = new And().add(Where.equal("codigo", cod)).add(Where.equal("sexo", "Hombre"));
+//		
+//		return ;
+//	}
 
 	@Override
 	public void save(Asignatura asignatura, ODB odb) {
